@@ -40,7 +40,7 @@ public class InsertSortArray {
     }
 
     public Map<Integer, Integer> median(){
-        Map<Integer, Integer> map = new HashMap<>();
+        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
         this.sort();
         if (nElems % 2 == 0) {
             map.put(nElems/2 - 1, value[nElems/2 - 1]);
@@ -49,6 +49,33 @@ public class InsertSortArray {
             map.put(nElems/2, value[nElems/2]);
         }
         return map;
+    }
+
+    public InsertSortArray noDuplication(){
+        int flag = 0;
+        for (int i = 0; i < nElems;) {
+            int start = i;
+            while( i < nElems - 1){
+                if (value[i] != value[i + 1]) {
+                    break;
+                }
+                i++;
+            }
+            int len = i - start;
+            if (len > 0) {
+                for (int j = i; j < nElems; j++) {
+                    value[j - len] = value[j];
+                }
+
+                nElems = nElems - len;
+
+            }
+            flag++;
+            i = flag;
+        }
+
+
+        return this;
     }
 
 
