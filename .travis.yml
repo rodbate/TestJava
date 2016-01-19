@@ -1,14 +1,19 @@
+
 lanuage: java
+
 jdk:
-  - oraclejdk8
+    - oraclejdk8
 
 branches:
     only:
         - master
+
 cache:
     directories:
         - $HOME/.gradle
+
 install: true
 script:
   - gradle check
+
 
