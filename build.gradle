@@ -1,4 +1,10 @@
-
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+    }
+}
 
 apply plugin: 'java'
 apply plugin: 'idea'
