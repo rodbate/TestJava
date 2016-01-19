@@ -16,11 +16,11 @@ public class StackChar {
         top = -1;
     }
 
-    private void push(char key){
+    public void push(char key){
         value[++top] = key;
     }
 
-    private char pop(){
+    public char pop(){
         return value[top--];
     }
 

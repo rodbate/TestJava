@@ -7,7 +7,7 @@ public class StringReverseApp {
 
     public static void main(String[] args) {
 
-
+        System.out.println(StringReverse.reverse("kobe bryant"));
 
 
 
