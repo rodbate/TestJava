@@ -12,5 +12,8 @@ public class PriorityApp {
         System.out.println(queue.peekMax());
         System.out.println(queue.peekMin());
         System.out.println(queue.display());
+
+
+        
     }
 }
