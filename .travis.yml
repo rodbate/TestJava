@@ -2,6 +2,10 @@ lanuage: java
 jdk:
   - oraclejdk8
 
+branches:
+    only:
+        - master
+
 script:
-  - gradle check
+  - gradle build
 
