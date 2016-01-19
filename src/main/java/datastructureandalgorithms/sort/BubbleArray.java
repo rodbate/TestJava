@@ -59,6 +59,36 @@ public class BubbleArray {
         return this;
     }
 
+    // sort by odd and even
+    public BubbleArray oddEvenSort(){
+        boolean sorted = false;
+        int temp;
+        while(!sorted){
+            sorted = true;
+
+            //odd
+            for (int i = 1; i < nElems; i+=2) {
+                if (i < nElems - 1 && value[i] > value[i +1]) {
+                    temp = value[i + 1];
+                    value[i + 1] = value[i];
+                    value[i] = temp;
+                    sorted = false;
+                }
+            }
+
+            //even
+            for (int i = 0; i < nElems; i+=2) {
+                if (i < nElems - 1 && value[i] > value[i +1]) {
+                    temp = value[i + 1];
+                    value[i + 1] = value[i];
+                    value[i] = temp;
+                    sorted = false;
+                }
+            }
+        }
+        return this;
+    }
+
     public String display(){
         StringBuilder sb = new StringBuilder();
         sb.append("[");

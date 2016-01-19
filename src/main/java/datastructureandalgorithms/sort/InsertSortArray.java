@@ -1,7 +1,6 @@
 package datastructureandalgorithms.sort;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -12,12 +11,21 @@ public class InsertSortArray {
 
     private int[] value;
     private int nElems;
+    private int compTimes;
+    private int dupTimes;
 
     public InsertSortArray(int size){
         value = new int[size];
         nElems = 0;
     }
 
+    public int getCompTimes() {
+        return compTimes;
+    }
+
+    public int getDupTimes() {
+        return dupTimes;
+    }
 
     public InsertSortArray insert(int key){
         if (nElems > value.length - 1) throw new ArrayIndexOutOfBoundsException();
@@ -32,6 +40,22 @@ public class InsertSortArray {
             j = i;
             while(j > 0 && value[j - 1] >= temp){
                 value[j] = value[j - 1];
+                j--;
+            }
+            value[j] = temp;
+        }
+        return this;
+    }
+
+    public InsertSortArray enhancedSort(){
+        int temp, j;
+        for (int i = 1; i < nElems; i++) {
+            temp = value[i];
+            j = i;
+            compTimes += i;
+            while(j > 0 && value[j - 1] > temp){
+                value[j] = value[j - 1];
+                dupTimes++;
                 j--;
             }
             value[j] = temp;
@@ -73,8 +97,6 @@ public class InsertSortArray {
             flag++;
             i = flag;
         }
-
-
         return this;
     }
 
