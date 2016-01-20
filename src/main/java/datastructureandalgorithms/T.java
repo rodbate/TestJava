@@ -1,7 +1,7 @@
 package datastructureandalgorithms;
 
 /**
- * Created by rodbate on 2016/1/12.
+ * Created by rod bate on 2016/1/12.
  */
 public class T {
 }
