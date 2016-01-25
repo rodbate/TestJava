@@ -46,6 +46,22 @@ public class OrderArray {
         }
     }
 
+    //binary search by recursive
+    public int find(int searchKey, int lowerBound, int upperBound){
+        int curIn = (lowerBound + upperBound) / 2;
+        if (array[curIn] == searchKey) {
+            return curIn;
+        } else if (lowerBound > upperBound) {
+            return 0;
+        } else {
+            if (array[curIn] > searchKey) {
+                return find(searchKey, lowerBound, curIn - 1);
+            } else {
+                return find(searchKey, curIn + 1, upperBound);
+            }
+        }
+    }
+
     public boolean insert(int key){
         if (nElems >= array.length) {
             return false;

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.mapper.BlogMapper">
+
+    <resultMap id="blogResultMap" type="blog">
+        <id property="id" column="id" />
+        <result property="titleS" column="title" />
+        <result property="content" column="content" />
+        <association property="author" javaType="author" column="author_id" fetchType="eager" >
+            <id property="id" column="id" />
+            <result property="name" column="name" />
+        </association>
+    </resultMap>
+
+    <select id="selectBlog" parameterType="java.lang.Integer" resultMap="blogResultMap" statementType="PREPARED">
+        select
+            b.id, b.title, b.content, a.id, a.name
+        from
+            t_blog b left outer join t_author a on b.author_id = a.id
+        where b.id = #{id}
+    </select>
+    <insert id="create" parameterType="blog" useGeneratedKeys="true" keyProperty="id">
+        insert into t_blog (title, content) values (#{title}, #{content})
+    </insert>
+
+    <!--<insert id="create" parameterType="blog">
+        <selectKey order="AFTER">
+            select
+        </selectKey>
+    </insert>-->
+
+    <delete id="deleteById" parameterType="java.lang.Integer" statementType="PREPARED">
+        delete from t_blog where id = #{id}
+    </delete>
+
+    <update id="update" parameterType="blog" statementType="PREPARED">
+        update t_blog set
+            id = #{id},
+            title = #{title},
+            content = #{content, jdbcType=NULL}
+        where id = #{id}
+    </update>
+
+</mapper>

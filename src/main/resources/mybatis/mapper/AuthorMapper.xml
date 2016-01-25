@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.mapper.AuthorMapper">
+
+    <resultMap id="authorResultMap" type="author" >
+        <id property="id" column="id" />
+        <result property="name" column="name" />
+        <collection property="blogs" javaType="java.util.HashSet" ofType="blog">
+            <id property="id" column="blog_id" />
+            <result property="titleS" column="title" />
+            <result property="content" column="content" />
+        </collection>
+    </resultMap>
+    <select id="findById" parameterType="java.lang.Integer" resultMap="authorResultMap" >
+        select a.id, a.name, b.id blog_id, b.title, b.content from t_author a left outer join t_blog b on b.author_id = a.id where a.id = #{id}
+    </select>
+
+</mapper>
