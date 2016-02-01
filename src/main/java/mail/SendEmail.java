@@ -1,5 +1,10 @@
 package mail;
 
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import java.util.Properties;
+
 public class SendEmail
 {
    public static void main(String [] args)
@@ -11,16 +16,23 @@ public class SendEmail
       String from = "web@gmail.com";
 
       // Assuming you are sending email from localhost
-      String host = "localhost";
+      String host = "smtp.qq.com";
 
       // Get system properties
       Properties properties = System.getProperties();
 
       // Setup mail server
       properties.setProperty("mail.smtp.host", host);
+      properties.setProperty("mail.smtp.port", "465");
+      //properties.setProperty("mail.auth", "true");
 
       // Get the default Session object.
-      Session session = Session.getDefaultInstance(properties);
+      Session session = Session.getDefaultInstance(properties, new Authenticator() {
+         @Override
+         protected PasswordAuthentication getPasswordAuthentication() {
+            return new PasswordAuthentication("","");
+         }
+      });
 
       try{
          // Create a default MimeMessage object.

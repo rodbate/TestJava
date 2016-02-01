@@ -9,9 +9,11 @@ public class Test {
 
     public static void main(String[] args) {
 
-        List<String> list = ManagementFactory.getRuntimeMXBean().getInputArguments();
+        /*List<String> list = ManagementFactory.getRuntimeMXBean().getInputArguments();
 
-        list.forEach(System.out::print);
+        list.forEach(System.out::print);*/
+
+        //System.out.println((1 << 4));
 
 
         //Runtime.getRuntime().exec();
