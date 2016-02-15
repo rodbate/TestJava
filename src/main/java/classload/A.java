@@ -6,4 +6,8 @@ package classload;
 public class A {
 
     public static String str = "A";
+
+    public static void say(){
+        System.out.println("t t t t t");
+    }
 }

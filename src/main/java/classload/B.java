@@ -6,4 +6,8 @@ package classload;
 public class B extends A {
 
     //public static String str = "B";
+    /*@Override
+    public static void say(){
+        System.out.println("t t t t t");
+    }*/
 }
